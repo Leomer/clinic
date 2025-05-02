@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">clinica</string>
+
+    <!--    Tittle  -->
+    <string name="app_tittle">Clínica San Juan\nde la Salud</string>
+    <!--    Login  -->
+    <string name="login_tittle">Inicio de sesión</string>
+    <string name="login_user">Usuario</string>
+    <string name="login_password">Contraseña</string>
+    <string name="login_button">Iniciar</string>
+    <string name="login_forgot">¿Te olvidaste tu contraseña?</string>
+    <string name="login_sign_up">Registrate</string>
 </resources>

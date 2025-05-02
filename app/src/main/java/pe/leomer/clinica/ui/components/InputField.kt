@@ -29,33 +29,34 @@ fun InputField(
     onInputValue: (String) -> Unit,
     keyboardType: KeyboardType
 ){
+    // guarda en memoria el valor del texto ingresado en el componente
     var texto by remember { mutableStateOf("") }
 
-    Row (
+    Row (// los contenidos agregado irán en una sola fila
         modifier = Modifier
-            .fillMaxWidth()
+            .fillMaxWidth() //usa el ancho total de la pantalla
             .padding(top = 10.dp, start = 30.dp, end = 30.dp),
-        verticalAlignment =Alignment.CenterVertically
+        verticalAlignment =Alignment.CenterVertically // alinea en el eje Y
     ) {
 
-        Box(
+        Box( // contenedor
             modifier = Modifier
-                .fillMaxWidth()
+                .fillMaxWidth() //usa el ancho total de la pantalla
                 .padding(horizontal = 32.dp),
-            contentAlignment = Alignment.Center
+            contentAlignment = Alignment.Center  // alinea todos los objetos en el centro del contenedor
         ) {
             TextField(
-                value = texto,
-                onValueChange = { texto = it },
-                placeholder = { Text(placeholder) },
-                singleLine = true,
+                value = texto,  // valor del texto que se muestra
+                onValueChange = { texto = it }, // actualiza el valor del texto
+                placeholder = { Text(placeholder) }, // agrega el placeholder
+                singleLine = true, // agrega la línea inferior
                 keyboardOptions = KeyboardOptions(
-                    keyboardType = keyboardType
+                    keyboardType = keyboardType // asigna el tipo de teclado
                 ),
                 modifier = Modifier
                     .fillMaxWidth()
                     .background(Color.White, RoundedCornerShape(8.dp)),
-                colors = TextFieldDefaults.colors(
+                colors = TextFieldDefaults.colors( // personalización de los colores
                     focusedContainerColor = Color.White,
                     unfocusedContainerColor = Color.White,
                     disabledContainerColor = Color.LightGray,
