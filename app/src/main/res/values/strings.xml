@@ -3,6 +3,7 @@
 
     <!--    Tittle  -->
     <string name="app_tittle">Clínica San Juan\nde la Salud</string>
+    <string name="app_second_tittle">Clínica San Juan</string>
     <!--    Login  -->
     <string name="login_tittle">Inicio de sesión</string>
     <string name="login_user">Usuario</string>
@@ -10,4 +11,16 @@
     <string name="login_button">Iniciar</string>
     <string name="login_forgot">¿Te olvidaste tu contraseña?</string>
     <string name="login_sign_up">Registrate</string>
+
+    <!--    Register  -->
+    <string name="register_subtittle">Ingresa su documento</string>
+    <string name="document_type">Tipo de documento:</string>
+    <string name="document_number">N° de documento:</string>
+    <string name="birthdate">Fecha de nacimiento</string>
+    <string name="term_condition">Acepto los Términos y Condiciones y la Política\nde Privacidad</string>
+    <string name="benefits">Acepto recibir beneficios, ofertas, publicidad y\nnovedades de la clínica</string>
+    <string name="register_button">Continuar</string>
+    <string name="account">¿Ya tienes una cuenta?</string>
+    <string name="login">Inicia Sesión</string>
+
 </resources>

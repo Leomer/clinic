@@ -34,15 +34,14 @@ fun InputField(
 
     Row (// los contenidos agregado irán en una sola fila
         modifier = Modifier
-            .fillMaxWidth() //usa el ancho total de la pantalla
-            .padding(top = 10.dp, start = 30.dp, end = 30.dp),
+            .fillMaxWidth(), //usa el ancho total de la pantalla
         verticalAlignment =Alignment.CenterVertically // alinea en el eje Y
     ) {
 
         Box( // contenedor
             modifier = Modifier
-                .fillMaxWidth() //usa el ancho total de la pantalla
-                .padding(horizontal = 32.dp),
+                .fillMaxWidth(), //usa el ancho total de la pantalla
+                //.padding(horizontal = 20.dp),
             contentAlignment = Alignment.Center  // alinea todos los objetos en el centro del contenedor
         ) {
             TextField(
@@ -76,7 +75,7 @@ fun InputField(
 
 @Preview(showBackground = true, widthDp = 360, heightDp = 592)
 @Composable
-fun InputFieldPreview(){
+private fun InputFieldPreview(){
     InputField(
         placeholder = "Referencia:",
         value = "soy un valor",
