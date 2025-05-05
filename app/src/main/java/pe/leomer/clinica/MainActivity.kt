@@ -11,7 +11,13 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import pe.leomer.clinica.ui.screens.home.HomeScreen
 import pe.leomer.clinica.ui.screens.login.LoginScreen
+import pe.leomer.clinica.ui.screens.signup.SignUpScreen
 import pe.leomer.clinica.ui.theme.ClinicaTheme
 
 class MainActivity : ComponentActivity() {
@@ -19,7 +25,31 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            LoginScreen()
+            val navController = rememberNavController()
+            Navigation(navController)
+        }
+    }
+}
+
+@Composable
+private fun Navigation(navController: NavHostController) {
+    NavHost(navController = navController, startDestination = "home") {
+        composable(route = "main") {
+            LoginScreen(
+                navController = navController
+            )
+        }
+        composable(route = "register") {
+            SignUpScreen(
+                navController = navController,
+                onClicked = {}
+            )
+        }
+        composable(route = "home") {
+            HomeScreen(
+                navController = navController,
+                //onClicked = {}
+            )
         }
     }
 }

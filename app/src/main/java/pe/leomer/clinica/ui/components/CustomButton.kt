@@ -26,7 +26,6 @@ fun CustomButton(
     Box(
         contentAlignment = Alignment.Center, // centra el contenido
         modifier = Modifier
-            .padding(vertical = 20.dp) // padding en el eje y
             .width(130.dp) // ancho del contenedor
             .height(40.dp) // alto del contenedor
             .background( // se agrega color de fondo y se redondea las esquinas
@@ -45,7 +44,6 @@ fun CustomButton(
             color = Color.White,
             modifier = Modifier
                 .padding(vertical = 3.dp, horizontal = 8.dp)
-
         )
     }
 }

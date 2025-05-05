@@ -19,6 +19,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
@@ -41,7 +43,6 @@ fun InputField(
         Box( // contenedor
             modifier = Modifier
                 .fillMaxWidth(), //usa el ancho total de la pantalla
-                //.padding(horizontal = 20.dp),
             contentAlignment = Alignment.Center  // alinea todos los objetos en el centro del contenedor
         ) {
             TextField(
@@ -52,6 +53,7 @@ fun InputField(
                 keyboardOptions = KeyboardOptions(
                     keyboardType = keyboardType // asigna el tipo de teclado
                 ),
+                visualTransformation = if (keyboardType == KeyboardType.Password) PasswordVisualTransformation() else VisualTransformation.None,
                 modifier = Modifier
                     .fillMaxWidth()
                     .background(Color.White, RoundedCornerShape(8.dp)),

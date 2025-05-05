@@ -1,5 +1,6 @@
 package pe.leomer.clinica.ui.screens.login
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -8,26 +9,34 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import kotlinx.coroutines.delay
 import pe.leomer.clinica.R
 import pe.leomer.clinica.ui.components.CustomButton
 import pe.leomer.clinica.ui.components.InputField
 import pe.leomer.clinica.ui.components.TittleLabel
 
 @Composable
-fun LoginScreen() {
+fun LoginScreen(
+    navController: NavController?
+) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(start = 8.dp, end = 8.dp, top = 40.dp, bottom = 20.dp),
+            .background(colorResource(R.color.background))
+            .padding(start = 40.dp, end = 40.dp, top = 40.dp, bottom = 20.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         // se llama al componente TittleLabel
@@ -35,10 +44,15 @@ fun LoginScreen() {
             title = stringResource(R.string.app_tittle)
         )
         // Agrega un spaciado con un tamaño de 100 dp
-        Spacer(modifier = Modifier.height(100.dp))
+        Spacer(modifier = Modifier.height(50.dp))
 
         // Se agrega un texto
-        Text(text = stringResource(R.string.login_tittle))
+        Text(
+            text = stringResource(R.string.login_tittle),
+            fontSize = 16.sp
+        )
+
+        Spacer(modifier = Modifier.height(50.dp))
 
         // Se agrega el componente de ingreso de usuario
         InputField(
@@ -47,6 +61,9 @@ fun LoginScreen() {
             onInputValue = {},
             keyboardType = KeyboardType.Text
         )
+
+        Spacer(modifier = Modifier.height(20.dp))
+
         // Se agrega el componente de ingreso de password
         InputField(
             placeholder = stringResource(R.string.login_password),
@@ -94,7 +111,9 @@ fun LoginScreen() {
             ),
             modifier = Modifier
                 .clickable {
-
+                    navController?.navigate(route = "register") {
+                        popUpTo("main") { inclusive = true}
+                    }
                 }
         )
     }
@@ -103,5 +122,5 @@ fun LoginScreen() {
 @Preview
 @Composable
 private fun LoginScreenPreview() {
-    LoginScreen()
+    LoginScreen(null)
 }

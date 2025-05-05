@@ -22,5 +22,14 @@
     <string name="register_button">Continuar</string>
     <string name="account">¿Ya tienes una cuenta?</string>
     <string name="login">Inicia Sesión</string>
+    <!--    Validate  -->
+    <string name="validate_title">Verifica tus datos personales</string>
+    <string name="validate_warning">Seleccione los datos correctos que aparezcan\nen tu documento de identidad.</string>
+    <string name="validate_title1">Verifica tus datos personales</string>
+
+    <!--    Validate  -->
+    <string name="home_empty_date">Todavía no tienes citas</string>
+    <string name="home_add_date">Agendar una cita</string>
+
 
 </resources>
