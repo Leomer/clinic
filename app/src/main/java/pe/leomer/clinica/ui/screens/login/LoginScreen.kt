@@ -30,7 +30,12 @@ import pe.leomer.clinica.ui.components.TittleLabel
 
 @Composable
 fun LoginScreen(
-    navController: NavController?
+    loginState: LoginState,
+    onInputUser: (String) -> Unit,
+    onInputPassword: (String) -> Unit,
+    onStartLogin: () -> Unit,
+    onForgetPassword: () -> Unit,
+    onRegister: () -> Unit
 ) {
     Column(
         modifier = Modifier
@@ -57,8 +62,8 @@ fun LoginScreen(
         // Se agrega el componente de ingreso de usuario
         InputField(
             placeholder = stringResource(R.string.login_user),
-            value = "",
-            onInputValue = {},
+            value = loginState.user,
+            onInputValue = onInputUser,
             keyboardType = KeyboardType.Text
         )
 
@@ -67,8 +72,8 @@ fun LoginScreen(
         // Se agrega el componente de ingreso de password
         InputField(
             placeholder = stringResource(R.string.login_password),
-            value = "",
-            onInputValue = {},
+            value = loginState.password,
+            onInputValue = onInputPassword,
             keyboardType = KeyboardType.Password
         )
 
@@ -79,7 +84,9 @@ fun LoginScreen(
         CustomButton(
             label = stringResource(R.string.login_button),
             color = Color.Blue,
-            onClicked = {}
+            onClicked = {
+                onStartLogin()
+            }
         )
 
         // Agrega un spaciado con un tamaño de 50 dp
@@ -94,7 +101,7 @@ fun LoginScreen(
             ),
             modifier = Modifier
                 .clickable {
-
+                    onForgetPassword()
                 }
 
         )
@@ -111,9 +118,7 @@ fun LoginScreen(
             ),
             modifier = Modifier
                 .clickable {
-                    navController?.navigate(route = "register") {
-                        popUpTo("main") { inclusive = true}
-                    }
+                    onRegister()
                 }
         )
     }
@@ -122,5 +127,12 @@ fun LoginScreen(
 @Preview
 @Composable
 private fun LoginScreenPreview() {
-    LoginScreen(null)
+    LoginScreen(
+        loginState = LoginState.initState(),
+        onInputUser = {},
+        onInputPassword = {},
+        onStartLogin = {},
+        onRegister = {},
+        onForgetPassword = {}
+    )
 }
