@@ -30,6 +30,12 @@
     <!--    Validate  -->
     <string name="home_empty_date">Todavía no tienes citas</string>
     <string name="home_add_date">Agendar una cita</string>
+    <string name="email">Correo electrónico:</string>
+    <string name="validate_name">nombre y Apellidos:</string>
+    <string name="validate_phone">N° de celular:</string>
+    <string name="validate_birthday">fecha de nacimiento:</string>
+    <string name="validate_country">Código de país:</string>
+    <string name="validate_sex">Sexo:</string>
 
 
 </resources>

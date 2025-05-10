@@ -10,4 +10,5 @@
 
     <!--    Custom  -->
     <color name="background">#FFF7ECF3</color>
+    <color name="background_warning">#FFE3D2AF</color>
 </resources>

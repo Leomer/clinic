@@ -9,14 +9,18 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import pe.leomer.clinica.ui.screens.forgetpassword.ForgetPasswordScreen
 import pe.leomer.clinica.ui.screens.home.HomeScreen
 import pe.leomer.clinica.ui.screens.login.LoginScreen
+import pe.leomer.clinica.ui.screens.login.LoginViewModel
 import pe.leomer.clinica.ui.screens.signup.SignUpScreen
 import pe.leomer.clinica.ui.theme.ClinicaTheme
 
@@ -33,12 +37,21 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 private fun Navigation(navController: NavHostController) {
-    NavHost(navController = navController, startDestination = "home") {
+    NavHost(navController = navController, startDestination = "main") {
         composable(route = "main") {
+            val viewModel: LoginViewModel = remember { LoginViewModel() }
+            val state = viewModel.loginState.collectAsState().value
+
             LoginScreen(
-                navController = navController
+                loginState = state,
+                onInputUser = { value -> viewModel.onInputUser(value)},
+                onInputPassword = { value -> viewModel.onInputPassword(value) },
+                onStartLogin = { viewModel.onStartLogin(navController) },
+                onRegister = { viewModel.onRegister(navController) },
+                onForgetPassword = { viewModel.onForgetPassword(navController) }
             )
         }
+
         composable(route = "register") {
             SignUpScreen(
                 navController = navController,
@@ -50,6 +63,9 @@ private fun Navigation(navController: NavHostController) {
                 navController = navController,
                 //onClicked = {}
             )
+        }
+        composable(route = "forget") {
+            ForgetPasswordScreen()
         }
     }
 }

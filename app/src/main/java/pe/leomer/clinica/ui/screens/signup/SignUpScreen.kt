@@ -22,6 +22,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.KeyboardType
@@ -41,10 +42,11 @@ fun SignUpScreen(
     navController: NavController?,
     onClicked: (Boolean) -> Unit
 ) {
-    var isValidate by remember { mutableStateOf(false) }
+    var isValidate by remember { mutableStateOf(true) }
     Column(
         modifier = Modifier
             .fillMaxSize()
+            .background(colorResource(R.color.background))
             .padding(start = 10.dp, end = 10.dp, top = 40.dp, bottom = 20.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {

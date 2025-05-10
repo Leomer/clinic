@@ -16,111 +16,60 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import pe.leomer.clinica.R
+import pe.leomer.clinica.ui.components.DropDown
+import pe.leomer.clinica.ui.screens.signup.components.CardInfo
 
 @Composable
 fun ValidateView() {
     Column(
         modifier = Modifier
+            .background(colorResource(R.color.background))
             .fillMaxWidth()
     ) {
         Text(
-            text = stringResource(R.string.validate_title)
+            text = stringResource(R.string.validate_title),
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier
+                .padding(bottom = 20.dp)
         )
-        Spacer(modifier = Modifier.height(10.dp))
-        Row {
-           Box(modifier = Modifier.weight(1f)) {
-               Text(
-                   text = "DNI:"
-               )
-           }
-            Box(modifier = Modifier.weight(1f)) {
-                Text(
-                    text = "Correo electrónico:"
-                )
-            }
-        }
 
-        Row {
-            Box(modifier = Modifier.weight(1f)) {
-                Text(
-                    text = "48272134"
-                )
-            }
-            Box(modifier = Modifier.weight(1f)) {
-                Text(
-                    text = "luis.salmavides@gmail.com"
-                )
-            }
-        }
+        CardInfo(
+            label1 = "DNI:",
+            value1 = "48272134",
+            label2 = stringResource(R.string.email),
+            value2 = "emolina@gmail.com"
+        )
 
-        Row {
-            Box(modifier = Modifier.weight(1f)) {
-                Text(
-                    text = "nombre y Apellidos:"
-                )
-            }
-            Box(modifier = Modifier.weight(1f)) {
-                Text(
-                    text = "N° de celular:"
-                )
-            }
-        }
-
-        Row {
-            Box(modifier = Modifier.weight(1f)) {
-                Text(
-                    text = "Luis Salmavides"
-                )
-            }
-            Box(modifier = Modifier.weight(1f)) {
-                Text(
-                    text = "987231223"
-                )
-            }
-        }
-
-        Row {
-            Box(modifier = Modifier.weight(1f)) {
-                Text(
-                    text = "fecha de nacimiento:"
-                )
-            }
-            Box(modifier = Modifier.weight(1f)) {
-                Text(
-                    text = "Código de país:"
-                )
-            }
-        }
-
-        Row {
-            Box(modifier = Modifier.weight(1f)) {
-                Text(
-                    text = "20/03/1993"
-                )
-            }
-            Box(modifier = Modifier.weight(1f)) {
-                Text(
-                    text = "051 - Lima Perú"
-                )
-            }
-        }
-
+        CardInfo(
+            label1 = stringResource(R.string.validate_name),
+            value1 = "Luis Salmavides",
+            label2 = stringResource(R.string.validate_phone),
+            value2 = "987231223"
+        )
+        CardInfo(
+            label1 = stringResource(R.string.validate_birthday),
+            value1 = "20/03/1993",
+            label2 = stringResource(R.string.validate_country),
+            value2 = "051 - Lima Perú"
+        )
 
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .background(Color(0xe4d0b0))
-                .height(40.dp),
+                .padding(top = 20.dp)
+                .background(colorResource(R.color.background_warning))
+                .height(60.dp),
             horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.CenterVertically
         ) {
             Box(
-                modifier = Modifier
-                    .weight(1f),
                 contentAlignment = Alignment.BottomEnd
             ) {
                 Image(
@@ -131,13 +80,33 @@ fun ValidateView() {
             }
             Box(
                 modifier = Modifier
+                    .background(colorResource(R.color.background_warning))
+                    .height(40.dp)
+                    //.background(Color(0xe4d0b0))
                     .padding(start = 8.dp)
-                    .weight(6f),
             ) {
                 Text(
                     text = stringResource(R.string.validate_warning)
                 )
             }
         }
+        val options = mutableListOf("Masculino", "Femenino")
+
+        Box(
+            modifier = Modifier
+                .padding(top = 20.dp, end = 150.dp)
+        ) {
+            DropDown(
+                label = stringResource(R.string.validate_sex),
+                options = options,
+                onSelectTransaction = {}
+            )
+        }
     }
+}
+
+@Preview
+@Composable
+fun ValidateViewPreview() {
+    ValidateView()
 }
