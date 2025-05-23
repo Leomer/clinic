@@ -1,11 +1,16 @@
 package pe.leomer.clinica.ui.screens.login
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavController
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.launch
+import pe.leomer.clinica.data.repository.LogonRepository
 
 class LoginViewModel: ViewModel() {
+
+    private val repository = LogonRepository()
 
     private val _loginState = MutableStateFlow(
         LoginState.initState()
@@ -27,8 +32,25 @@ class LoginViewModel: ViewModel() {
     }
 
     fun onStartLogin(navController: NavController?) {
-        navController?.navigate(route = "home") {
-            popUpTo("main") { inclusive = true}
+
+        viewModelScope.launch {
+            try {
+                val getLogon = repository.getLogon(
+                    user = loginState.value.user,
+                    pass =  loginState.value.password
+                )
+
+                if (getLogon == null || getLogon.appointment.isEmpty()) {
+                    println("Error conexion")
+                } else {
+                    navController?.navigate(route = "home") {
+                        popUpTo("main") { inclusive = true}
+                    }
+                }
+
+            } catch(e: Exception) {
+                println(e.message)
+            }
         }
     }
 

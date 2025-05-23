@@ -32,7 +32,7 @@ fun InputField(
     keyboardType: KeyboardType
 ){
     // guarda en memoria el valor del texto ingresado en el componente
-    var texto by remember { mutableStateOf("") }
+    var texto by remember { mutableStateOf(value) }
 
     Row (// los contenidos agregado irán en una sola fila
         modifier = Modifier
@@ -47,7 +47,10 @@ fun InputField(
         ) {
             TextField(
                 value = texto,  // valor del texto que se muestra
-                onValueChange = { texto = it }, // actualiza el valor del texto
+                onValueChange = {
+                    texto = it
+                    onInputValue(texto)
+                                }, // actualiza el valor del texto
                 placeholder = { Text(placeholder) }, // agrega el placeholder
                 singleLine = true, // agrega la línea inferior
                 keyboardOptions = KeyboardOptions(

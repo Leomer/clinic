@@ -4,6 +4,7 @@
     <!--    Tittle  -->
     <string name="app_tittle">Clínica San Juan\nde la Salud</string>
     <string name="app_second_tittle">Clínica San Juan</string>
+
     <!--    Login  -->
     <string name="login_tittle">Inicio de sesión</string>
     <string name="login_user">Usuario</string>
@@ -22,6 +23,7 @@
     <string name="register_button">Continuar</string>
     <string name="account">¿Ya tienes una cuenta?</string>
     <string name="login">Inicia Sesión</string>
+
     <!--    Validate  -->
     <string name="validate_title">Verifica tus datos personales</string>
     <string name="validate_warning">Seleccione los datos correctos que aparezcan\nen tu documento de identidad.</string>
@@ -36,6 +38,5 @@
     <string name="validate_birthday">fecha de nacimiento:</string>
     <string name="validate_country">Código de país:</string>
     <string name="validate_sex">Sexo:</string>
-
 
 </resources>

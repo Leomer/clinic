@@ -50,6 +50,13 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation(libs.navigation.compose)
+    // Retrofit para llamadas HTTP
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+
+    // Coroutines (para llamadas asíncronas)
+    implementation(libs.kotlinx.coroutines.android)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
