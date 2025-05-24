@@ -1,4 +1,4 @@
-package pe.leomer.clinica.data.model
+package pe.leomer.clinica.data.model.remote
 
 data class Appointment(
     val specialty: String,

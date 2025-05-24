@@ -93,18 +93,18 @@ fun LoginScreen(
         Spacer(modifier = Modifier.height(50.dp))
 
         // Se agrega un texto con la opción de clickeable
-        Text(
-            text = stringResource(R.string.login_forgot),
-            style = TextStyle(
-                color = Color.Blue,// color de letra
-                textDecoration = TextDecoration.Underline // subrayado
-            ),
-            modifier = Modifier
-                .clickable {
-                    onForgetPassword()
-                }
-
-        )
+//        Text(
+//            text = stringResource(R.string.login_forgot),
+//            style = TextStyle(
+//                color = Color.Blue,// color de letra
+//                textDecoration = TextDecoration.Underline // subrayado
+//            ),
+//            modifier = Modifier
+//                .clickable {
+//                    onForgetPassword()
+//                }
+//
+//        )
 
         // Agrega un spaciado con un tamaño de 10 dp
         Spacer(modifier = Modifier.height(10.dp))

@@ -1,4 +1,4 @@
-package pe.leomer.clinica.data.model
+package pe.leomer.clinica.data.model.remote
 
 import com.google.gson.annotations.SerializedName
 

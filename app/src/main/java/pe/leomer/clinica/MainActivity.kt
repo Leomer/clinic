@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -37,9 +38,10 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 private fun Navigation(navController: NavHostController) {
+    val context = LocalContext.current
     NavHost(navController = navController, startDestination = "main") {
         composable(route = "main") {
-            val viewModel: LoginViewModel = remember { LoginViewModel() }
+            val viewModel: LoginViewModel = remember { LoginViewModel(context) }
             val state = viewModel.loginState.collectAsState().value
 
             LoginScreen(
