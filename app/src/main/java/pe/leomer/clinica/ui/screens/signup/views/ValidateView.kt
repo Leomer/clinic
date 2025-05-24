@@ -24,10 +24,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import pe.leomer.clinica.R
 import pe.leomer.clinica.ui.components.DropDown
+import pe.leomer.clinica.ui.screens.signup.SingUpState
 import pe.leomer.clinica.ui.screens.signup.components.CardInfo
 
 @Composable
-fun ValidateView() {
+fun ValidateView(
+    singUpState: SingUpState,
+) {
     Column(
         modifier = Modifier
             .background(colorResource(R.color.background))
@@ -42,22 +45,22 @@ fun ValidateView() {
 
         CardInfo(
             label1 = "DNI:",
-            value1 = "48272134",
+            value1 = singUpState.documentNumber,
             label2 = stringResource(R.string.email),
-            value2 = "emolina@gmail.com"
+            value2 = singUpState.email
         )
 
         CardInfo(
             label1 = stringResource(R.string.validate_name),
-            value1 = "Luis Salmavides",
+            value1 = singUpState.name,
             label2 = stringResource(R.string.validate_phone),
-            value2 = "987231223"
+            value2 = singUpState.celPhoneNumber
         )
         CardInfo(
             label1 = stringResource(R.string.validate_birthday),
-            value1 = "20/03/1993",
+            value1 = singUpState.birthDay,
             label2 = stringResource(R.string.validate_country),
-            value2 = "051 - Lima Perú"
+            value2 = singUpState.code
         )
 
         Row(
@@ -99,7 +102,7 @@ fun ValidateView() {
             DropDown(
                 label = stringResource(R.string.validate_sex),
                 options = options,
-                onSelectTransaction = {}
+                onSelectOption = {}
             )
         }
     }
@@ -108,5 +111,7 @@ fun ValidateView() {
 @Preview
 @Composable
 fun ValidateViewPreview() {
-    ValidateView()
+    ValidateView(
+        singUpState = SingUpState.initState(),
+    )
 }

@@ -27,8 +27,7 @@ import androidx.compose.ui.unit.dp
 fun DropDown(
     label: String,
     options: List<String>,
-    //transactionSelected: String,
-    onSelectTransaction: () -> Unit
+    onSelectOption: (String) -> Unit
 ) {
     var selectedItem by remember { mutableStateOf(options[0]) }
 
@@ -45,7 +44,9 @@ fun DropDown(
         ) {
             OutlinedTextField(
                 value = selectedItem,
-                onValueChange = {},
+                onValueChange = {
+                    onSelectOption(it)
+                },
                 modifier = Modifier
                     .fillMaxWidth()
                     .menuAnchor(
@@ -87,6 +88,6 @@ private fun DropDownPreview() {
     DropDown(
         label = "some",
         options = option,
-        onSelectTransaction = {}
+        onSelectOption = {}
     )
 }

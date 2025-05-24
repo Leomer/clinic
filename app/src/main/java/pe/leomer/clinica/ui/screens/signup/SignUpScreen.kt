@@ -40,9 +40,15 @@ import pe.leomer.clinica.ui.screens.signup.views.ValidateView
 @Composable
 fun SignUpScreen(
     navController: NavController?,
+    singUpState: SingUpState,
+    onSelectDocument: (String) -> Unit,
+    onInputDocument: (String) -> Unit,
+    onInputBirthDay: (String) -> Unit,
+    onInputName: (String) -> Unit,
+    onInputCelPhone: (String) -> Unit,
     onClicked: (Boolean) -> Unit
 ) {
-    var isValidate by remember { mutableStateOf(true) }
+    var isValidate by remember { mutableStateOf(false) }
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -63,9 +69,18 @@ fun SignUpScreen(
             modifier = Modifier.weight(6f)
         ){
             if (!isValidate) {
-                RegisterView()
+                RegisterView(
+                    singUpState = singUpState,
+                    onSelectDocument,
+                    onInputDocument,
+                    onInputBirthDay,
+                    onInputName,
+                    onInputCelPhone
+                )
             } else {
-                ValidateView()
+                ValidateView(
+                    singUpState = singUpState
+                )
             }
         }
 
@@ -152,7 +167,13 @@ fun SignUpScreen(
 @Composable
 private fun SignUpScreenPreview() {
     SignUpScreen(
-        navController = null
-        , onClicked = { }
+        navController = null,
+        singUpState = SingUpState.initState(),
+        onSelectDocument = {},
+        onInputDocument = {},
+        onInputBirthDay = {},
+        onInputCelPhone = {},
+        onInputName = {},
+        onClicked = { }
     )
 }

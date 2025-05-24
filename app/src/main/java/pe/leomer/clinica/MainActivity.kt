@@ -23,6 +23,7 @@ import pe.leomer.clinica.ui.screens.home.HomeScreen
 import pe.leomer.clinica.ui.screens.login.LoginScreen
 import pe.leomer.clinica.ui.screens.login.LoginViewModel
 import pe.leomer.clinica.ui.screens.signup.SignUpScreen
+import pe.leomer.clinica.ui.screens.signup.SingUpViewModel
 import pe.leomer.clinica.ui.theme.ClinicaTheme
 
 class MainActivity : ComponentActivity() {
@@ -55,8 +56,17 @@ private fun Navigation(navController: NavHostController) {
         }
 
         composable(route = "register") {
+            val viewModel: SingUpViewModel = remember { SingUpViewModel() }
+            val state = viewModel.singUpState.collectAsState().value
+
             SignUpScreen(
                 navController = navController,
+                singUpState = state,
+                onSelectDocument = { value -> viewModel.onSelectDocument(value) },
+                onInputDocument = { value -> viewModel.onInputDocument(value) },
+                onInputBirthDay = { value -> viewModel.onInputBirthDay(value) },
+                onInputCelPhone = { value -> viewModel.onInputCelPhone(value) },
+                onInputName = { value -> viewModel.onInputName(value) },
                 onClicked = {}
             )
         }
