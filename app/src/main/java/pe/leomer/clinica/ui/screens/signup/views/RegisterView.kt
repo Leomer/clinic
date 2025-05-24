@@ -157,7 +157,7 @@ fun RegisterView(
                         placeholder = "Ej: 14/03/2024",
                         value = singUpState.birthDay,
                         onInputValue = onInputBirthDay,
-                        keyboardType = KeyboardType.Number
+                        keyboardType = KeyboardType.Text
                     )
                 }
                 Box(
